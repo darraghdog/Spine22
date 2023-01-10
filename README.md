@@ -1,3 +1,24 @@
+# RSNA Experiment on UT data. 
+
+1. Download and unzip the competition data to `datamount/` using `./bin/1_download.sh`. 
+
+2. Place the `RSNA_Kaggle_Experiment.csv` file in `datamount/` folder. 
+
+3. Split of the validation and training data using `python scripts/make_fold_v01.py`
+
+  
+  
+  
+  
+  
+   
+  
+   
+  
+  
+
+
+______________________________________________	
 # RSNA22
 RSNA 2022 - 3rd Place solution - Cervical Spine Fracture Detection
 
