@@ -1,17 +1,16 @@
 import os
 import sys
 import platform
-PATH = './'
-'''
 PATH = '/mount/rsna2022'
+
 if platform.system()=='Darwin':
-    PATH = '/Users/dhanley/Documents/RSNA22'
+    PATH = '/Users/dhanley/Documents/rsna2022'
     os.chdir(f'{PATH}')
     sys.path.append("configs")
     sys.path.append("models")
     sys.path.append("data")
     sys.path.append("postprocess")
-'''
+
 from default_config import basic_cfg
 import pandas as pd
 
@@ -23,10 +22,9 @@ if platform.system()!='Darwin':
     cfg.name = os.path.basename(__file__).split(".")[0]
     cfg.output_dir = f"{PATH}/weights/{os.path.basename(__file__).split('.')[0]}"
 
-cfg.data_dir = f"datamount/"
-cfg.data_folder = cfg.data_dir + "train_images/train_cropped_pngs_8bit_v06/"
-# cfg.train_df = f'{cfg.data_dir}/train_bbox_v01.csv.gz'
-cfg.bbox_folder = f'{cfg.data_dir}/rsna_annotations_v01/yolo_ds/'
+cfg.data_dir = f"{PATH}/datamount/"
+cfg.data_folder = cfg.data_dir + "train_images/"
+cfg.train_df = f'{cfg.data_dir}/train_bbox_v01.csv.gz'
 
 # stages
 cfg.test = False
@@ -52,7 +50,7 @@ cfg.imagesize = (512,512)
 cfg.windows = [(400, 1800)] # [ (500, 1800), (400, 650), (80, 300)]
 cfg.drop_scans = '1.2.826.0.1.3680043.20574 1.2.826.0.1.3680043.29952'.split()
 cfg.targets = 'x0 y0 x1 y1 has_box'.split()
-cfg.load_jpg = False
+cfg.load_jpg = True
 
 # Augmentations
 #cfg.p_grid_distortion = 0.5
