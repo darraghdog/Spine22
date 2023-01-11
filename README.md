@@ -6,7 +6,11 @@
 
 3. Split of the validation and training data using `python scripts/make_fold_v01.py`
 
-  
+4. Run `python scripts/_make_bbox_part1.py` to get bbox labels from the segmentations.
+
+5. Create jpg images by running `python process_images_v01.py`.
+
+6. For this step run `./bin/2_bounding_box_train_infer.sh`. The details of the steps are below.
   
   
   
