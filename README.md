@@ -10,9 +10,9 @@
 
 5. Create jpg images by running `python process_images_v01.py`.
 
-6. For this step run `./bin/2_bounding_box_train_infer.sh`. The details of the steps are below.
+6. For this step run `./bin/2_bounding_box_train.sh`. The details of the steps are below.
   
-  
+6. For this step run `./bin/2_bounding_box_infer.sh`. The details of the steps are below.
   
   
    
