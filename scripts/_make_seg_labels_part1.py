@@ -26,8 +26,9 @@ dcmfiles = glob.glob('datamount/train_images/*/*.*')
 dcmfiles = pd.Series(dcmfiles).str.split('/', expand=True).iloc[:, -2:]
 dcmfiles.columns = 'StudyInstanceUID slice_number'.split()
 dcmfiles.slice_number = dcmfiles.slice_number.str.replace('.dcm', '').astype(int)
+dcmfiles = dcmfiles[dcmfiles. StudyInstanceUID.isin(trndf.StudyInstanceUID)]
 dposns = []
-for t,row in tqdm(dcmfiles.iterrows()):
+for t,row in tqdm(dcmfiles.iterrows(), total = len(dcmfiles)):
     dnm = f'datamount/train_images/{row.StudyInstanceUID}/{row.slice_number}.dcm'
     D = pydicom.dcmread(dnm)
     dposns.append(D.ImagePositionPatient)
@@ -47,6 +48,7 @@ by the max number pixels of that vertebrae seen in any slice
 cols = ['BG'] + [f'C{i}' for i in range(1,8)] + [f'T{i}' for i in range(1, 13)]
 trnsdf[cols] = -1
 segls = glob.glob('datamount/segmentations/*.nii')
+segls = [i for i in segls if i.split('/')[-1].replace('.nii', '') in set(trndf.StudyInstanceUID.tolist())]
 
 for segnm in tqdm(segls):
     seg = nib.load(segnm).get_fdata()
