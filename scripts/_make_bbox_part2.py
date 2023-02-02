@@ -69,5 +69,6 @@ bbpreddf.iloc[:,2:4] = np.ceil((bbpreddf.iloc[:,2:4] * 512)).astype(int).clip(0,
 # Show a histogram of the ratio of slices we would keep per study
 ((bbpreddf.slnum_to - bbpreddf.slnum_from) / bbpreddf.slnum_max).hist(bins = 50 )
 
-bbpreddf.to_csv('datamount/train_bbox_pred_v02.csv.gz')
-
+out_file_nm = 'datamount/train_bbox_pred_v02.csv.gz'
+print(f'Writing to {out_file_nm}')
+bbpreddf.to_csv(out_file_nm)
