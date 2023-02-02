@@ -12,7 +12,13 @@
 
 6. For this step run `./bin/2_bounding_box_train.sh`. The details of the steps are below.
   
-6. For this step run `./bin/2_bounding_box_infer.sh`. The details of the steps are below.
+7. Make the seg labels with `python scripts/_make_seg_labels_part1.py`.
+
+8. Train the segmentation models at n image level with `3_slice_vertebrae_train.sh`. 
+
+
+
+
   
   
    
