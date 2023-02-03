@@ -27,7 +27,7 @@ cfg.data_dir = f"{PATH}/datamount/"
 cfg.data_folder = cfg.data_dir + "train_images/"
 # cfg.train_df = f'{cfg.data_dir}/train_folded_v01.csv'
 cfg.train_df = f'{cfg.data_dir}/train_image_level_v03.csv.gz'
-cfg.bbox_df = f'{cfg.data_dir}/train_bbox_pred_v01.csv.gz'
+cfg.bbox_df = f'{cfg.data_dir}/train_bbox_pred_v02.csv.gz'
 cfg.target = [f'C{i}' for i in range(1,8)]
 
 # stages
