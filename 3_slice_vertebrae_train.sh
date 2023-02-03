@@ -1,5 +1,5 @@
 # Create vertebrae label where we have segmentations
-#python scripts/_make_seg_labels_part1.py
+python scripts/_make_seg_labels_part1.py
 
 # Train a number of models learn the segmentation ratio. 
 for _ in 1 2 3
