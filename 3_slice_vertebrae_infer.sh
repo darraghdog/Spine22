@@ -15,5 +15,5 @@ do
 done
 
 # Aggregate vertebrae predictions and make fracture label
-#python scripts/_make_seg_labels_part2.py
+python _make_seg_labels_part2.py
 
