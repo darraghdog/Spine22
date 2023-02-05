@@ -187,7 +187,7 @@ class CustomDataset(Dataset):
         w,h = bb[2]-bb[0], bb[3]-bb[1]
         w_pad, h_pad = h - min(h,w), w - min(h,w)
         mat_pad = np.array([-w_pad//2, -h_pad//2, w_pad//2, h_pad//2])
-        x0,y0,x1,y1 = bb = (mat_pad + bb).clip(0, 512)
+        x0,y0,x1,y1 = bb = (mat_pad + bb[:4]).clip(0, 512)
         
         dfseq = self.df.loc[samp.name].reset_index().set_index('slice_number')
         dfseq = dfseq.loc[start_pos:].iloc[:self.cfg.sequence_len]
