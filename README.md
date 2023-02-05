@@ -16,7 +16,7 @@
 
 8. Train the segmentation models at n image level with `3_slice_vertebrae_train.sh`. 
 
-
+9. Infer the Vertebrae type at image level with `3_slice_vertebrae_infer.sh`.
 
 
   
