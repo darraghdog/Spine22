@@ -184,10 +184,22 @@ class CustomDataset(Dataset):
         
         # Narrow in where we have +ve bboxes
         slnums = dfseq.slice_number.values
-        slpos_from = np.where(slnums == bb_s.slnum_from)[0] - 2
-        slpos_to   = np.where(slnums == bb_s.slnum_to)[0] + 2
-        slpos_from = max((0, slpos_from.item()))
-        slpos_to = min((len(slnums), slpos_to.item()))
+        slpos_from1 = np.where(slnums == bb_s.slnum_from)[0] - 2
+        slpos_to1   = np.where(slnums == bb_s.slnum_to)[0] + 2
+        # print(slpos_from.item(), slpos_to.item(), len(slnums)) 
+        try:
+            if len(slpos_from1) == 1:
+                slpos_from = max((0, slpos_from1.item()))
+            else:
+                slpos_from = 0
+            if len(slpos_to1) == 1:
+                slpos_to = min((len(slnums), slpos_to1.item()))
+            else:
+                slpos_to = len(slnums)
+            # slpos_from = max((0, slpos_from1.item()))
+            # slpos_to = min((len(slnums), slpos_to1.item()))
+        except:
+            print(slpos_from1, slpos_to1, len(slnums))
         dfseq = dfseq.iloc[slpos_from:slpos_to]
         
         label = self.metadf.loc[idd, ['patient_overall'] + self.cfg.target].values
